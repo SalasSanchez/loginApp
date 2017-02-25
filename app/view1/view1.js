@@ -9,6 +9,14 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', ['$scope', function($scope) {
+	$scope.user = {};
 
+	$scope.checkSubmit = function(user){
+		$scope.user = user;
+		console.dir($scope.user);
+		if(user.password !== user.passwordConf){
+			$scope.message = "The passwords do not match";
+		}
+	}
 }]);
